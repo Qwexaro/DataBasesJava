@@ -5,20 +5,13 @@ public class Course {
     private int id;
     private String name;
     private int duration;
-    private CourseType courseType;
+    private CourseType type;
     private String description;
     private int teacherId;
-    private int studentCount;
+    private int studentsCount;
+    private double price;
     private double pricePerHour;
-    private List<Course> listAllCourse = new ArrayList<>();
-
-    public List<Course> getListAllCourse() {
-        return listAllCourse;
-    }
-
-    public void addCourse(List<Course> listAllCourse) {
-        this.listAllCourse = listAllCourse;
-    }
+    private static List<Course> listAllCourses = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -44,12 +37,12 @@ public class Course {
         this.duration = duration;
     }
 
-    public CourseType getCourseType() {
-        return courseType;
+    public CourseType getType() {
+        return type;
     }
 
-    public void setCourseType(CourseType courseType) {
-        this.courseType = courseType;
+    public void setType(CourseType type) {
+        this.type = type;
     }
 
     public String getDescription() {
@@ -68,12 +61,20 @@ public class Course {
         this.teacherId = teacherId;
     }
 
-    public int getStudentCount() {
-        return studentCount;
+    public int getStudentsCount() {
+        return studentsCount;
     }
 
-    public void setStudentCount(int studentCount) {
-        this.studentCount = studentCount;
+    public void setStudentsCount(int studentsCount) {
+        this.studentsCount = studentsCount;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getPricePerHour() {
@@ -82,5 +83,30 @@ public class Course {
 
     public void setPricePerHour(double pricePerHour) {
         this.pricePerHour = pricePerHour;
+    }
+
+    public static void addCourse(Course course) {
+        listAllCourses.add(course);
+    }
+
+    public static void getListAllCourses() {
+        for (Course currentCourse : listAllCourses) {
+            System.out.println("\"" + currentCourse + "\"");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", duration=" + duration +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", teacherId=" + teacherId +
+                ", studentsCount=" + studentsCount +
+                ", price=" + price +
+                ", pricePerHour=" + pricePerHour +
+                '}';
     }
 }

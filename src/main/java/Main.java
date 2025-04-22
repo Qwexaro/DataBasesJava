@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,10 +17,17 @@ public class Main {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
 
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Course currrentCourse = new Course();
                 currrentCourse.setId(resultSet.getInt("id"));
                 currrentCourse.setName(resultSet.getString("name"));
+                currrentCourse.setDuration(resultSet.getInt("duration"));
+                currrentCourse.setCourseType(CourseType.valueOf(resultSet.getString("type")));
+                currrentCourse.setTeacherId(resultSet.getInt("teacher_id"));
+                currrentCourse.setStudentCount(resultSet.getInt("students_count"));
+                currrentCourse.setPrice(resultSet.getDouble("price"));
+                currrentCourse.setPricePerHour(resultSet.getDouble("price_per_hour"));
+                Course.addCourse(currrentCourse);
             }
 
             resultSet.close();
