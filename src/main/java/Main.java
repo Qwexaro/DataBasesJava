@@ -30,6 +30,17 @@ public class Main {
                 Course.addCourse(currentCourse);
             }
 
+            resultSet = statement.executeQuery("SELECT * FROM students");
+
+            while (resultSet.next()){
+                Student student = new Student();
+                student.setId(resultSet.getInt("id"));
+                student.setName(resultSet.getString("name"));
+                student.setAge(resultSet.getInt("age"));
+                student.setRegistrationDate(resultSet.getDate("registration_date"));
+                Student.addStudent(student);
+            }
+
 
             resultSet.close();
             statement.close();
