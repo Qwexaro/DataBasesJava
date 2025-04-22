@@ -16,8 +16,9 @@ public class Main {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
 
             while (resultSet.next()){
-              String currentNameCourse = resultSet.getString("name");
-                System.out.println("\"" + currentNameCourse + "\"");
+                Course currrentCourse = new Course();
+                currrentCourse.setId(resultSet.getInt("id"));
+                currrentCourse.setName(resultSet.getString("name"));
             }
 
             resultSet.close();
