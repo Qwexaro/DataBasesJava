@@ -16,26 +16,27 @@ public class Main {
             Connection connection = DriverManager.getConnection(url, user, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
-
             while (resultSet.next()) {
-                Course currrentCourse = new Course();
-                currrentCourse.setId(resultSet.getInt("id"));
-                currrentCourse.setName(resultSet.getString("name"));
-                currrentCourse.setDuration(resultSet.getInt("duration"));
-                currrentCourse.setCourseType(CourseType.valueOf(resultSet.getString("type")));
-                currrentCourse.setTeacherId(resultSet.getInt("teacher_id"));
-                currrentCourse.setStudentCount(resultSet.getInt("students_count"));
-                currrentCourse.setPrice(resultSet.getDouble("price"));
-                currrentCourse.setPricePerHour(resultSet.getDouble("price_per_hour"));
-                Course.addCourse(currrentCourse);
+                Course currentCourse = new Course();
+                currentCourse.setId(resultSet.getInt("id"));
+                currentCourse.setName(resultSet.getString("name"));
+                currentCourse.setDuration(resultSet.getInt("duration"));
+                currentCourse.setType(CourseType.valueOf(resultSet.getString("type")));
+                currentCourse.setDescription(resultSet.getString("description"));
+                currentCourse.setTeacherId(resultSet.getInt("teacher_id"));
+                currentCourse.setStudentsCount(resultSet.getInt("students_count"));
+                currentCourse.setPrice(resultSet.getDouble("price"));
+                currentCourse.setPricePerHour(resultSet.getDouble("price_per_hour"));
+                Course.addCourse(currentCourse);
             }
+
 
             resultSet.close();
             statement.close();
             connection.close();
-
         } catch (Exception ex) {
             ex.getMessage();
         }
+
     }
 }
