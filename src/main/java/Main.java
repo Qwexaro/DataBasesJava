@@ -17,13 +17,13 @@ public class Main {
             Statement statement = connection.createStatement();
             //Изменение названия курса с индексом 3
             statement.execute(
-                    "UPDATE Courses SET name='Java-разработчик с 0 до PRO(Professional)' " +
+                    "UPDATE Courses SET name='Java-разработчик с 0 до PRO' " +
                             "WHERE id=3");
             //Создание записи для учителя с индексом 51
             statement.execute(
                     "INSERT INTO Teachers (id, name, salary, age) " +
                             "VALUES (51, 'Кунжут', 10000, 101)");
-            //Создание записи для курса с индексом 47
+            
             statement.execute(
                     "INSERT INTO Courses " +
                             "(id, name, duration, " +
@@ -33,7 +33,7 @@ public class Main {
                             "(47, 'Продажа курсов по Java', 20, " +
                             "'MARKETING', 'Курс, кот-й научит Вас продавать курсы по Java', 1," +
                             "100, 100000, 10000)");
-            //Удаление учителя с индексом 51
+
             statement.execute(
                     "DELETE FROM Teachers WHERE id=51");
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
