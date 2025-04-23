@@ -15,15 +15,29 @@ public class Main {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             Statement statement = connection.createStatement();
-            //Изменение названия курса с индексом 3
+
             statement.execute(
                     "UPDATE Courses SET name='Java-разработчик с 0 до PRO' " +
                             "WHERE id=3");
-            //Создание записи для учителя с индексом 51
+
+            statement.execute("DELETE FROM teachers WHERE id=51");
+
             statement.execute(
                     "INSERT INTO Teachers (id, name, salary, age) " +
-                            "VALUES (51, 'Кунжут', 10000, 101)");
-            
+                            "VALUES (51, 'Рубенович', 10000, 101)");
+statement.execute(
+                    "INSERT INTO Teachers (id, name, salary, age) " +
+                            "VALUES (52, 'Хомякович', 10000, 101)");
+statement.execute(
+                    "INSERT INTO Teachers (id, name, salary, age) " +
+                            "VALUES (53, 'Араравович', 10000, 101)");
+statement.execute(
+                    "INSERT INTO Teachers (id, name, salary, age) " +
+                            "VALUES (54, 'Дадов', 10000, 101)");
+statement.execute(
+                    "INSERT INTO Teachers (id, name, salary, age) " +
+                            "VALUES (55, 'Нетов', 10000, 101)");
+
             statement.execute(
                     "INSERT INTO Courses " +
                             "(id, name, duration, " +
@@ -34,8 +48,6 @@ public class Main {
                             "'MARKETING', 'Курс, кот-й научит Вас продавать курсы по Java', 1," +
                             "100, 100000, 10000)");
 
-            statement.execute(
-                    "DELETE FROM Teachers WHERE id=51");
             ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
             while (resultSet.next()) {
                 Course currentCourse = new Course();
