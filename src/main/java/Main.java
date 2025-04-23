@@ -38,6 +38,24 @@ statement.execute(
                     "INSERT INTO Teachers (id, name, salary, age) " +
                             "VALUES (55, 'Нетов', 10000, 101)");
 
+
+            statement.execute(
+                    "INSERT INTO Courses (id, name, salary, age) " +
+                            "VALUES (51, 'Механический разработчик', 10000, 101)");
+            statement.execute(
+                    "INSERT INTO Courses (id, name, salary, age) " +
+                            "VALUES (52, 'Котлиновский разработчик', 10000, 101)");
+            statement.execute(
+                    "INSERT INTO Courses (id, name, salary, age) " +
+                            "VALUES (53, 'Электронный разработчик', 10000, 101)");
+            statement.execute(
+                    "INSERT INTO Courses (id, name, salary, age) " +
+                            "VALUES (54, 'Изумительный разработчик', 10000, 101)");
+            statement.execute(
+                    "INSERT INTO Courses (id, name, duration, type, description ) " +
+                            "VALUES (55, 'Универсальный разработчик', PROGRAMMING, 2323)");
+
+
             statement.execute(
                     "INSERT INTO Courses " +
                             "(id, name, duration, " +
@@ -48,7 +66,7 @@ statement.execute(
                             "'MARKETING', 'Курс, кот-й научит Вас продавать курсы по Java', 1," +
                             "100, 100000, 10000)");
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM courses.courses");
             while (resultSet.next()) {
                 Course currentCourse = new Course();
                 currentCourse.setId(resultSet.getInt("id"));
